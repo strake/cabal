@@ -224,7 +224,7 @@ listPackageSources' verbosity rip cwd pkg_descr pps =
               then "."
               else srcDataDirRaw
         in fmap (fmap (\p -> srcDataDir </> p)) $
-             matchDirFileGlob verbosity (specVersion pkg_descr) srcDataDir filename
+             matchDirFileGlob verbosity (specVersion pkg_descr) (cwd </> srcDataDir) filename
 
     -- Extra source files.
   , fmap concat . for (extraSrcFiles pkg_descr) $ \fpath ->
